@@ -6,15 +6,16 @@
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $objDB = new db();
-    $link = $objDB->conecta_mysql();
+    $objDb = new db();
+    $link = $objDb->conecta_mysql();
 
-    $sql = "insert into usuarios(usuario, email, senha) values ('$usuario','$email','$senha')";
+    $sql = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$usuario', '$email', '$senha')";
+    //executar a
 
-    if($mysqli_query($link, $sql)){
-        echo 'Usuario registrado com sucesso!';
+    if(mysqli_query($link, $sql)){
+        echo "Usuario registrado com sucesso!";
     } else {
-        echo 'erro ao registrar o usuário';
-    };
+        echo "erro ao registrar o usuário";
+    }
 
 ?>
