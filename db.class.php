@@ -6,7 +6,7 @@ class db {
     //usuario
     private $usuario = 'u295230694_twitt';
     //senha
-    private $senha = 'gforce10';
+    private $senha = 'positivo';
     //banco de dados
     private $database = 'u295230694_twitt';
 
