@@ -29,7 +29,7 @@
                        data: { texto_tweet: $('#texto_tweet').val()},
                        success: function (data) {
                            $('#texto_tweet').val('');
-                           alert('Tweet incluído com sucesso!');
+                           atualizaTweet();
                        }
                    })
                }
@@ -103,7 +103,9 @@
                 </div>
             </div>
         </div>
-        <div id="tweets" class="list-group"></div>
+        <div id="tweets" class="list-group">
+
+        </div>
     </div>
     <div class="col-md-3">
         <div class="panel panel-default">
