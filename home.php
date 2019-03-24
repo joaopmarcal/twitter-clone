@@ -23,7 +23,14 @@
         $(document).ready(function(){
             $('#btn_tweet').click( function () {
                if($('#texto_tweet').val().length > 0){
-                   alert('Campo está preenchido');
+                   $.ajax({
+                       url: 'inclui_tweet.php',
+                       method: 'post',
+                       data: { texto_tweet: $('#texto_tweet').val()},
+                       success: function (data) {
+                           alert(data);
+                       }
+                   })
                }
 
             });
