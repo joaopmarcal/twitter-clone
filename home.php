@@ -28,7 +28,8 @@
                        method: 'post',
                        data: { texto_tweet: $('#texto_tweet').val()},
                        success: function (data) {
-                           alert(data);
+                           $('#texto_tweet').val('');
+                           alert('Tweet incluído com sucesso!');
                        }
                    })
                }
