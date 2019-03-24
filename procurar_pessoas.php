@@ -1,10 +1,11 @@
-<?php
-    session_start();
+<?
+session_start();
 
-    if (!isset($_SESSION['usuario'])){
-        header('Location: index.php?erro=1');
-    }
+if(!$_SESSION['usuario']){
+    header('Location: index.php?erro=1');
+}
 ?>
+
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
@@ -21,31 +22,31 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
-            $('#btn_tweet').click( function () {
-               if($('#texto_tweet').val().length > 0){
-                   $.ajax({
-                       url: 'inclui_tweet.php',
-                       method: 'post',
-                       data: $('#form_tweet').serialize(),
-                       success: function (data) {
-                           $('#texto_tweet').val('');
-                           atualizaTweet();
-                       }
-                   })
-               }
+
+            $('#btn_procurar_pessoa').click(function(){
+
+                if($('#nome_pessoa').val().length > 0){
+
+                    $.ajax({
+
+                        url: 'get_pessoas.php',
+
+                        method: 'POST',
+
+                        data: $('#form_procurar_pessoas').serialize(),
+
+                        success: function(data){
+
+                            $('#pessoas').html(data);
+
+                        }
+
+                    });
+
+                }
 
             });
-            
-            function atualizaTweet() {
-                //carrega os tweets
-                $.ajax({
-                    url: 'get_tweet.php',
-                    success: function (data) {
-                        $('#tweets').html(data);
-                    }
-                });
-            }
-            atualizaTweet();
+
         });
 
     </script>
@@ -69,6 +70,7 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="home.php">Home</a></li>
                 <li><a href="sair.php">Sair</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -81,13 +83,12 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <h4><?= $_SESSION['usuario'] ?></h4>
-
-                <hr>
+                <hr />
                 <div class="col-md-6">
-                    TWEETS <br> 1
+                    TWEETS <br /> 1
                 </div>
                 <div class="col-md-6">
-                    SEGUIDORES <br> 1
+                    SEGUIDORES <br /> 1
                 </div>
             </div>
         </div>
@@ -95,28 +96,22 @@
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-body">
-                <form id="form-tweet" class="input-group">
-                    <input type="text" id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora" maxlength="140">
+                <form id="form_procurar_pessoas" class="input-group">
+                    <input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" placeholder="Quem você está procurando?" maxlength="140" />
                     <span class="input-group-btn">
-                        <button id="btn_tweet" class="btn btn-default">Tweet</button>
-                    </span>
+								<button class="btn btn-default" id="btn_procurar_pessoa" type="button">Procurar</button>
+							</span>
                 </form>
             </div>
         </div>
-        <div id="tweets" class="list-group">
-
-        </div>
+        <div id="pessoas" class="list-group"></div>
     </div>
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h4><a href="procurar_pessoas.php">Procurar por pessoas</a></h4>
             </div>
         </div>
     </div>
-</div>
-
-
 </div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
