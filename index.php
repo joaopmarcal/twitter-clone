@@ -66,7 +66,7 @@
 	            	<a id="entrar" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entrar</a>
 					<ul class="dropdown-menu" aria-labelledby="entrar">
 						<div class="col-md-12">
-				    		<p>Você possui uma conta?</h3>
+				    		<p>Você possui uma conta?</p>
 				    		<br />
 							<form method="post" action="validar_acesso.php" id="formLogin">
 								<div class="form-group">

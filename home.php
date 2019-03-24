@@ -35,6 +35,17 @@
                }
 
             });
+            
+            function atualizaTweet() {
+                //carrega os tweets
+                $.ajax({
+                    url: 'get_tweet.php',
+                    success: function (data) {
+                        $('#tweets').html(data);
+                    }
+                });
+            }
+            atualizaTweet();
         });
 
     </script>
@@ -92,6 +103,7 @@
                 </div>
             </div>
         </div>
+        <div id="tweets" class="list-group"></div>
     </div>
     <div class="col-md-3">
         <div class="panel panel-default">
