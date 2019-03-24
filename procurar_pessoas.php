@@ -39,6 +39,20 @@ if(!$_SESSION['usuario']){
 
                             $('#pessoas').html(data);
 
+                            $('.btn_seguir').click( function () {
+                               var id_usuario = $(this).data('id_usuario');
+
+                               $.ajax({
+                                  url: 'seguir.php',
+                                  method: 'post',
+                                  data: { seguir_id_usuario: id_usuario },
+                                  success: function (data) {
+                                      alert('Requisição efetuada com sucesso!');
+                                  }
+                               });
+
+                            });
+
                         }
 
                     });
