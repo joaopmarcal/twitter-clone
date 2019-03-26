@@ -67,7 +67,7 @@
                        url: 'inclui_tweet.php',
                        method: 'post',
                        data: $('#form_tweet').serialize(),
-                       success: function (data) {
+                       success: function(data) {
                            $('#texto_tweet').val('');
                            atualizaTweet();
                        }
@@ -75,12 +75,12 @@
                }
 
             });
-            
+
             function atualizaTweet() {
                 //carrega os tweets
                 $.ajax({
                     url: 'get_tweet.php',
-                    success: function (data) {
+                    success: function(data) {
                         $('#tweets').html(data);
                     }
                 });
@@ -135,8 +135,8 @@
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-body">
-                <form id="form-tweet" class="input-group">
-                    <input type="text" id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora" maxlength="140">
+                <form id="form_tweet" class="input-group">
+                    <input type="text" id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140">
                     <span class="input-group-btn">
                         <button id="btn_tweet" class="btn btn-default">Tweet</button>
                     </span>
